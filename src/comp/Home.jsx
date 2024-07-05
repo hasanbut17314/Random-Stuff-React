@@ -18,12 +18,12 @@ function Home() {
 
     setLoading(true);
     try {
-     
+
       const [jResponse, jQuotes] = await axios.all([
         axios.get('/joke/Any?amount=10'),
         axios.get('/quotes?limit=5'),
         // axios.get('')
-        
+
       ])
 
       setJokes(jResponse.data.jokes || [])
@@ -33,7 +33,7 @@ function Home() {
       setQuotes(modifiedQuotes || [])
       // setFacts(jFacts.data || [])
       // console.log(jFacts.data)
-      
+
     } catch (error) {
 
       if (error.response) {
@@ -64,7 +64,7 @@ function Home() {
     pauseOnHover: true,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1075,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 3,
@@ -78,7 +78,7 @@ function Home() {
           slidesToShow: 2,
           slidesToScroll: 2,
           infinite: true,
-          dots: true
+          dots: false
         }
       },
       {
@@ -107,9 +107,9 @@ function Home() {
 
   return (
     <>
-      <div className='lg:pe-0 lg:mx-8'>
+      <div className='lg:pe-0 lg:mx-6'>
 
-        <div className='flex w-xl justify-between md:mb-5'>
+        <div className='flex w-xl justify-between md:mb-5 md:px-4'>
           <h5>Random Jokes</h5>
           <NavLink className='viewMore' to='/jokes'>
             view more
@@ -119,8 +119,8 @@ function Home() {
 
         <Slider {...sliderSettings}>
           {jokes.map((joke) => (
-            <div key={joke.id} className='px-2 slide-padding mx-[60px] md:mx-0 '>
-              <div className="mx-3 card bg-secondary p-3 rounded-lg w-64 h-72 gap-x-5 flex flex-col  items-center overflow-hidden">
+            <div key={joke.id} className='px-1 md:mx-0 '>
+              <div className="card bg-secondary p-3 rounded-lg md:w-64 w-full h-72 flex flex-col  items-center overflow-hidden">
                 <div className='flex'>
                   <p className='text-sm'>category: &nbsp;</p>
                   <h4 className='font-semibold'>{joke.category}</h4>
@@ -139,21 +139,21 @@ function Home() {
             </div>
           ))}
         </Slider>
-        
-{/* random quotes */}
-<div className='flex justify-between md:mb-5 mt-10'>
+
+        {/* random quotes */}
+        <div className='flex justify-between md:mb-5 mt-10 md:px-4'>
           <h5>Random Quotes</h5>
           <NavLink className='viewMore' to='/quotes'>
             view more
             <FontAwesomeIcon className='ms-2 arrRt transition-all duration-300' icon={faArrowRight} />
           </NavLink>
         </div>
-        
+
 
         <Slider {...sliderSettings}>
           {quotes.map((quotes, index) => (
-            <div key={index} className='px-2 mx-[60px] md:mx-0'>
-              <div className="card bg-secondary p-3 rounded-lg w-64 h-72  items-center overflow-hidden">
+            <div key={index} className='px-2 md:mx-0'>
+              <div className="card bg-secondary p-3 rounded-lg md:w-64 w-full h-72 flex flex-col items-center overflow-hidden">
                 <h2>{quotes.a}</h2>
                 <div className='text-sm md:mt-10 mt-7'>
                   <p className='font-semibold'>{quotes.q}</p>
@@ -163,9 +163,9 @@ function Home() {
           ))}
         </Slider>
 
-{/* random facts */}
-{/* 
-<div className='flex justify-between md:mb-5 mt-10'>
+        {/* random facts */}
+        {/* 
+        <div className='flex justify-between md:mb-5 mt-10'>
           <h5>Random Facts</h5>
           <NavLink className='viewMore' to='/facts'>
             view more

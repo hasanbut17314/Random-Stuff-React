@@ -15,7 +15,7 @@ function Layout() {
 
       <div onClick={hideSidebar} className="overlay h-full w-full fixed left-0 top-0 bg-black bg-opacity-60 hidden z-[1]"></div>
 
-      <aside className='bg-secondary h-screen md:py-5 py-4 px-8 lg:fixed lg:left-0 -left-64 transition-all duration-300 absolute lg:z-[1] z-[2] sideBar'>
+      <aside className='bg-secondary min-h-screen md:py-5 py-4 px-8 lg:fixed top-0 lg:left-0 -left-64 transition-all duration-300 absolute lg:z-[1] z-[2] sideBar'>
         <Sidebar />
       </aside>
 
@@ -25,7 +25,7 @@ function Layout() {
         <div className='lg:col-span-11 col-span-12'>
           <Header />
           
-          <div className='md:ms-10'>
+          <div className='lg:ms-10 lg:pe-5 lg:px-0 md:px-8 px-7'>
           <Outlet />
           </div>
 

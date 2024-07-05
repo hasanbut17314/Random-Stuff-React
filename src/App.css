@@ -7,6 +7,19 @@
     --secondary-text-color: white;
 }
 
+::-webkit-scrollbar {
+    width: 9px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(113, 112, 112, 0.898);
+    border-radius: 18px;
+}
+
 body {
   font-family: 'Poppins', sans-serif !important;
   color: var(--primary-text-color);

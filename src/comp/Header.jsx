@@ -30,7 +30,7 @@ function Header() {
       <button onClick={toggleSidebar} className='flex lg:hidden text-2xl mt-4'>
         <FontAwesomeIcon icon={faBars} />
       </button>
-      <img className='lg:h-32 md:h-28 lg:ms-auto' src={logo} alt="Logo" />
+      <img className='lg:h-32 h-28 lg:ms-auto' src={logo} alt="Logo" />
       <div className='lg:ml-auto lg:pt-7 lg:pr-4'>
         <Menu isLazy>
           <MenuButton className='px-3 py-2 bg-secondary rounded border'>
