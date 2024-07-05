@@ -29,6 +29,7 @@ function Home() {
         let factRqst = await axios.all(fResponse);
         const factsArray = factRqst.map(response => response.data);
         setFacts(factsArray);
+        console.log(facts);
       } catch (error) {
         if (error.response) {
           console.log(error.response.data);
@@ -46,8 +47,6 @@ function Home() {
         return index < 10;
       })
       setQuotes(modifiedQuotes || [])
-      setFacts(fResponse.data);
-      console.log(fResponse.data.text);
 
     } catch (error) {
 
@@ -185,7 +184,7 @@ function Home() {
         </div>
 
         <Slider {...sliderSettings}>
-          {facts.map((fact) => (
+          {facts && facts.map((fact) => (
             <div key={fact.id} className='px-2 md:mx-0 '>
               <div className="card bg-secondary p-3 rounded-lg md:w-64 w-full h-72 flex flex-col  items-center overflow-hidden">
                 <div className='flex'>
