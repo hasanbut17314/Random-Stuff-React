@@ -29,7 +29,6 @@ function Home() {
         let factRqst = await axios.all(fResponse);
         const factsArray = factRqst.map(response => response.data);
         setFacts(factsArray);
-        console.log(facts);
       } catch (error) {
         if (error.response) {
           console.log(error.response.data);
@@ -123,6 +122,7 @@ function Home() {
     <>
       <div className='lg:pe-0 lg:mx-6'>
 
+        {/* Jokes Container */}
         <div className='flex w-xl justify-between md:mb-5 mb-3 md:px-4 px-2'>
           <h5>Random Jokes</h5>
           <NavLink className='viewMore' to='/jokes'>
@@ -153,7 +153,8 @@ function Home() {
             </div>
           ))}
         </Slider>
-
+        
+        {/* Quotes Container */}
         <div className='flex justify-between md:mb-5 mb-3 mt-10 md:px-4 px-2'>
           <h5>Random Quotes</h5>
           <NavLink className='viewMore' to='/quotes'>
@@ -174,8 +175,9 @@ function Home() {
             </div>
           ))}
         </Slider>
-
-        <div className='flex w-xl justify-between md:mb-5 mb-3 md:px-4 px-2'>
+        
+        {/* Facts Container */}
+        <div className='flex w-xl justify-between md:mb-5 mt-10 mb-3 md:px-4 px-2'>
           <h5>Random Facts</h5>
           <NavLink className='viewMore' to='/facts'>
             view more
