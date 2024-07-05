@@ -6,6 +6,7 @@ import Jokes from './comp/Jokes'
 import Quotes from './comp/Quotes'
 import Home from './comp/Home'
 import Facts from './comp/Facts'
+import NotFound from './comp/404'
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
         <Route path='/jokes' element={<Jokes />} />
         <Route path='/quotes' element={<Quotes />} />
         <Route path='/facts' element={<Facts />} />
+        <Route path='*' element={<NotFound />} />
       </Route>
     )
   )

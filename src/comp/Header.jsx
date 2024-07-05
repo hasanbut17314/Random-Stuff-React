@@ -36,7 +36,7 @@ function Header() {
           <MenuButton className='px-3 py-2 bg-secondary rounded border'>
             Theme <FontAwesomeIcon className='ml-2 mb-1' icon={faSortDown} />
           </MenuButton>
-          <MenuList rounded={5} className='bg-secondary w-full text-center px-4 py-2'>
+          <MenuList zIndex={3} rounded={5} className='bg-secondary w-full text-center px-4 py-2 border'>
             <MenuItem onClick={darkTheme} className='px-3 py-2'>Dark</MenuItem>
             <MenuItem onClick={lightTheme} className='px-3 py-2'>Light</MenuItem>
             <MenuItem className='px-3 py-2'>Other</MenuItem>
