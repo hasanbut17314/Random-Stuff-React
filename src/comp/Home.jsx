@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import Slider from 'react-slick';
+import { Skeleton, SkeletonText } from '@chakra-ui/react'
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 import { NavLink } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
@@ -8,6 +11,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 function Home() {
+  const MySwal = withReactContent(Swal)
 
   const [jokes, setJokes] = useState([]);
   const [quotes, setQuotes] = useState([]);
@@ -30,15 +34,7 @@ function Home() {
         const factsArray = factRqst.map(response => response.data);
         setFacts(factsArray);
       } catch (error) {
-        if (error.response) {
-          console.log(error.response.data);
-        }
-        else if (error.request) {
-          console.log('Network Error! Check internet connection');
-        }
-        else {
-          console.log(error.message);
-        }
+        showError('Something went wrong! Check your internet connection and try again');
       }
 
       setJokes(jResponse.data.jokes || [])
@@ -49,15 +45,7 @@ function Home() {
 
     } catch (error) {
 
-      if (error.response) {
-        console.log(error.response.data);
-      }
-      else if (error.request) {
-        console.log('Network Error! Check internet connection');
-      }
-      else {
-        console.log(error.message);
-      }
+      showError('Something went wrong! Check your internet connection and try again');
 
     } finally {
       setLoading(false);
@@ -114,6 +102,15 @@ function Home() {
     ]
   };
 
+  const showError = (error) => {
+    MySwal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: error,
+      customClass: 'bg-primary text-primary'
+    });
+  }
+
   useEffect(() => {
     randomCalls()
   }, [])
@@ -153,7 +150,7 @@ function Home() {
             </div>
           ))}
         </Slider>
-        
+
         {/* Quotes Container */}
         <div className='flex justify-between md:mb-5 mb-3 mt-10 md:px-4 px-2'>
           <h5>Random Quotes</h5>
@@ -175,7 +172,7 @@ function Home() {
             </div>
           ))}
         </Slider>
-        
+
         {/* Facts Container */}
         <div className='flex w-xl justify-between md:mb-5 mt-10 mb-3 md:px-4 px-2'>
           <h5>Random Facts</h5>
@@ -194,12 +191,12 @@ function Home() {
                   <h4 className='font-semibold'>{fact.source}</h4>
                 </div>
                 <div className='text-sm md:mt-10 mt-7 '>
-                    <p className='font-semibold'>{fact.text}</p>
+                  <p className='font-semibold'>{fact.text}</p>
                 </div>
               </div>
             </div>
           ))}
-        </Slider>  
+        </Slider>
 
       </div>
     </>
