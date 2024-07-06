@@ -122,6 +122,7 @@ function Home() {
         {/* Jokes Container */}
         <div className='flex w-xl justify-between md:mb-5 mb-3 md:px-4 px-2'>
           <h5>Random Jokes</h5>
+          <SkeletonText isLoaded={loading}/>
           <NavLink className='viewMore' to='/jokes'>
             view more
             <FontAwesomeIcon className='ms-2 arrRt transition-all duration-300' icon={faArrowRight} />
