@@ -11,8 +11,12 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 function Home() {
+  
   const MySwal = withReactContent(Swal)
 
+  const skStart = getComputedStyle(document.documentElement).getPropertyValue('--skeleton-start');
+  const skEnd = getComputedStyle(document.documentElement).getPropertyValue('--skeleton-end');
+  
   const [jokes, setJokes] = useState([]);
   const [quotes, setQuotes] = useState([]);
   const [facts, setFacts] = useState([]);
@@ -121,10 +125,10 @@ function Home() {
 
         {/* Jokes Container */}
         <div className='flex w-xl justify-between md:mb-5 mb-3 md:px-4 px-2'>
-          <SkeletonText noOfLines={1} isLoaded={!loading} startColor='#0d1b2a' endColor='#1b263b'>
+          <SkeletonText noOfLines={1} isLoaded={!loading} startColor={skStart} endColor={skEnd}>
           <h5>Random Jokes</h5>
           </SkeletonText>
-           <SkeletonText noOfLines={1} isLoaded={!loading} startColor='#0d1b2a' endColor='#1b263b'>
+           <SkeletonText noOfLines={1} isLoaded={!loading} startColor={skStart} endColor={skEnd}>
           <NavLink className='viewMore' to='/jokes'>
             view more
             <FontAwesomeIcon className='ms-2 arrRt transition-all duration-300' icon={faArrowRight} />
@@ -137,7 +141,7 @@ function Home() {
           // Display skeletons while loading
           Array(3).fill().map((_, indx) => (
             <div key={indx} className='px-2 md:mx-0'>
-              <Skeleton rounded='md' startColor='#0d1b2a' endColor='#1b263b' height="288px">
+              <Skeleton rounded='md' startColor={skStart} endColor={skEnd} height="288px">
                 <div className="card bg-secondary p-3 rounded-lg md:w-64 w-full h-72 flex flex-col items-center overflow-hidden"></div>
               </Skeleton>
             </div>
@@ -167,10 +171,10 @@ function Home() {
 
         {/* Quotes Container */}
         <div className='flex justify-between md:mb-5 mb-3 mt-10 md:px-4 px-2'>
-          <SkeletonText noOfLines={1} isLoaded={!loading} startColor='#0d1b2a' endColor='#1b263b' >
+          <SkeletonText noOfLines={1} isLoaded={!loading} startColor={skStart} endColor={skEnd} >
             <h5>Random Quotes</h5>
           </SkeletonText>
-          <SkeletonText noOfLines={1} isLoaded={!loading} startColor='#0d1b2a' endColor='#1b263b' >
+          <SkeletonText noOfLines={1} isLoaded={!loading} startColor={skStart} endColor={skEnd} >
             <NavLink className='viewMore' to='/quotes'>
             view more
               <FontAwesomeIcon className='ms-2 arrRt transition-all duration-300' icon={faArrowRight} />
@@ -182,7 +186,7 @@ function Home() {
           {loading ? (
           Array(3).fill().map((_, i) => (
             <div key={i} className='px-2 md:mx-0'>
-              <Skeleton rounded='md' startColor='#0d1b2a' endColor='#1b263b' height="288px">
+              <Skeleton rounded='md' startColor={skStart} endColor={skEnd} height="288px">
                 <div className="card bg-secondary p-3 rounded-lg md:w-64 w-full h-72 flex flex-col items-center overflow-hidden"></div>
               </Skeleton>
             </div>
@@ -202,45 +206,45 @@ function Home() {
         </Slider>
 
         {/* Facts Container */}        
-      <div className='flex w-xl justify-between md:mb-5 mt-10 mb-3 md:px-4 px-2'>
-        <SkeletonText noOfLines={1} isLoaded={!loading} startColor='#0d1b2a' endColor='#1b263b'>
-          <h5>Random Facts</h5>
-        </SkeletonText>
-        <SkeletonText noOfLines={1} isLoaded={!loading} startColor='#0d1b2a' endColor='#1b263b'>
-          <NavLink className='viewMore' to='/facts'>
-            view more
-            <FontAwesomeIcon className='ms-2 arrRt transition-all duration-300' icon={faArrowRight} />
-          </NavLink>
-        </SkeletonText>
-      </div>
+        <div className='flex w-xl justify-between md:mb-5 mt-10 mb-3 md:px-4 px-2'>
+          <SkeletonText noOfLines={1} isLoaded={!loading} startColor={skStart} endColor={skEnd}>
+            <h5>Random Facts</h5>
+          </SkeletonText>
+          <SkeletonText noOfLines={1} isLoaded={!loading} startColor={skStart} endColor={skEnd}>
+            <NavLink className='viewMore' to='/facts'>
+              view more
+              <FontAwesomeIcon className='ms-2 arrRt transition-all duration-300' icon={faArrowRight} />
+            </NavLink>
+          </SkeletonText>
+        </div>
 
-      <Slider {...sliderSettings}>
-        {loading ? (
-          // Display skeletons while loading
-          Array(3).fill().map((_, index) => (
-            <div key={index} className='px-2 md:mx-0'>
-              <Skeleton rounded='md' startColor='#0d1b2a' endColor='#1b263b' height="288px">
-                <div className="card bg-secondary p-3 rounded-lg md:w-64 w-full h-72 flex flex-col items-center overflow-hidden"></div>
-              </Skeleton>
-            </div>
-          ))
-        ) : (
-          // Display actual facts once loaded
-          facts.map((fact) => (
-            <div key={fact.id} className='px-2 md:mx-0'>
-              <div className="card bg-secondary p-3 rounded-lg md:w-64 w-full h-72 flex flex-col items-center overflow-hidden">
-                <div className='flex'>
-                  <p className='text-sm'>source: &nbsp;</p>
-                  <h4 className='font-semibold'>{fact.source}</h4>
-                </div>
-                <div className='text-sm md:mt-10 mt-7'>
-                  <p className='font-semibold'>{fact.text}</p>
+        <Slider {...sliderSettings}>
+          {loading ? (
+            // Display skeletons while loading
+            Array(3).fill().map((_, index) => (
+              <div key={index} className='px-2 md:mx-0'>
+                <Skeleton rounded='md' startColor={skStart} endColor={skEnd} height="288px">
+                  <div className="card bg-secondary p-3 rounded-lg md:w-64 w-full h-72 flex flex-col items-center overflow-hidden"></div>
+                </Skeleton>
+              </div>
+            ))
+          ) : (
+            // Display actual facts once loaded
+            facts.map((fact) => (
+              <div key={fact.id} className='px-2 md:mx-0'>
+                <div className="card bg-secondary p-3 rounded-lg md:w-64 w-full h-72 flex flex-col items-center overflow-hidden">
+                  <div className='flex'>
+                    <p className='text-sm'>source: &nbsp;</p>
+                    <h4 className='font-semibold'>{fact.source}</h4>
+                  </div>
+                  <div className='text-sm md:mt-10 mt-7'>
+                    <p className='font-semibold'>{fact.text}</p>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))
-        )}
-      </Slider>
+            ))
+          )}
+        </Slider>
  
 
       </div>

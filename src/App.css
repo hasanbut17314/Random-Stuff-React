@@ -5,6 +5,8 @@
     --secondary-bg:  #0d1b2a;
     --primary-text-color: #c1c3c5;
     --secondary-text-color: white;
+    --skeleton-start: #000814;
+    --skeleton-end: #1b263b;
 }
 
 ::-webkit-scrollbar {

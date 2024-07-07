@@ -16,6 +16,8 @@ function Header() {
     document.documentElement.style.setProperty('--secondary-bg', '#ffe5d9');
     document.documentElement.style.setProperty('--primary-text-color', '#000814');
     document.documentElement.style.setProperty('--secondary-text-color', '#023e8a');
+    document.documentElement.style.setProperty('--skeleton-start', '#ced4da');
+    document.documentElement.style.setProperty('--skeleton-end', '#adb5bd');
   }
 
   let darkTheme = () => {
@@ -23,6 +25,8 @@ function Header() {
     document.documentElement.style.setProperty('--secondary-bg', '#0d1b2a');
     document.documentElement.style.setProperty('--primary-text-color', '#c1c3c5');
     document.documentElement.style.setProperty('--secondary-text-color', '#ffffff');
+    document.documentElement.style.setProperty('--skeleton-start', '#000814');
+    document.documentElement.style.setProperty('--skeleton-end', '#1b263b');
   }
 
   return (
