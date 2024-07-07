@@ -67,6 +67,7 @@ function Home() {
     slidesToScroll: 4,
     initialSlide: 0,
     pauseOnHover: true,
+    arrows: !loading,
     responsive: [
       {
         breakpoint: 1075,
@@ -246,7 +247,6 @@ function Home() {
           )}
         </Slider>
  
-
       </div>
     </>
   )

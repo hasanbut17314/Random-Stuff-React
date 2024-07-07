@@ -25,7 +25,7 @@ function Layout() {
         <div className='lg:col-span-11 col-span-12'>
           <Header />
           
-          <div className='lg:ms-10 lg:pe-5 lg:px-0 md:px-8 px-7 md:mx-0 sm:mx-4 mx-2'>
+          <div className='lg:ms-10 lg:pe-5 lg:px-0 md:px-8 px-7 md:mx-0 sm:mx-4 mx-3'>
           <Outlet />
           </div>
 

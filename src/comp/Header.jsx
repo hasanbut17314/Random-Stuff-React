@@ -36,16 +36,16 @@ function Header() {
       </button>
       <img className='lg:h-32 h-28 lg:ms-auto' src={logo} alt="Logo" />
       <div className='lg:ml-auto md:pt-7 sm:pt-5 pt-6 lg:pr-4'>
-        <Menu isLazy>
+        <Menu>
           <MenuButton className='sm:px-3 px-2 py-1 sm:py-2 bg-secondary rounded border'>
             <FontAwesomeIcon className='me-2' icon={faCloudMoon} />
             <span className='md:inline hidden'>Theme</span>
             <FontAwesomeIcon className='ml-2 mb-1' icon={faSortDown} />
           </MenuButton>
-          <MenuList zIndex={3} rounded={5} className='bg-secondary w-full text-center px-4 py-2 border'>
-            <MenuItem onClick={darkTheme} className='px-3 py-2'>Dark</MenuItem>
-            <MenuItem onClick={lightTheme} className='px-3 py-2'>Light</MenuItem>
-            <MenuItem className='px-3 py-2'>Other</MenuItem>
+          <MenuList className='bg-secondary'>
+            <MenuItem className='bg-secondary' onClick={darkTheme}>Dark</MenuItem>
+            <MenuItem className='bg-secondary' onClick={lightTheme}>Light</MenuItem>
+            <MenuItem className='bg-secondary'>Other</MenuItem>
           </MenuList>
         </Menu>
       </div>

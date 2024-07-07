@@ -29,19 +29,19 @@ body {
 }
 
 .bg-primary {
-    background-color: var(--primary-bg);
+    background-color: var(--primary-bg) !important;
 }
 
 .bg-secondary {
-    background-color: var(--secondary-bg);
+    background-color: var(--secondary-bg) !important;
 }
 
 .text-primary {
-    color: var(--primary-text-color);
+    color: var(--primary-text-color) !important;
 }
 
 .text-secondary {
-    color: var(--secondary-text-color);
+    color: var(--secondary-text-color) !important;
 }
 
 .active {
