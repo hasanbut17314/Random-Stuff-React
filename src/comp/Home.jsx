@@ -121,16 +121,29 @@ function Home() {
 
         {/* Jokes Container */}
         <div className='flex w-xl justify-between md:mb-5 mb-3 md:px-4 px-2'>
+          <SkeletonText noOfLines={1} isLoaded={!loading} startColor='#0d1b2a' endColor='#1b263b'>
           <h5>Random Jokes</h5>
-          <SkeletonText isLoaded={loading}/>
+          </SkeletonText>
+           <SkeletonText noOfLines={1} isLoaded={!loading} startColor='#0d1b2a' endColor='#1b263b'>
           <NavLink className='viewMore' to='/jokes'>
             view more
             <FontAwesomeIcon className='ms-2 arrRt transition-all duration-300' icon={faArrowRight} />
           </NavLink>
+          </SkeletonText>
         </div>
 
         <Slider {...sliderSettings}>
-          {jokes.map((joke) => (
+          {loading ? (
+          // Display skeletons while loading
+          Array(3).fill().map((_, indx) => (
+            <div key={indx} className='px-2 md:mx-0'>
+              <Skeleton rounded='md' startColor='#0d1b2a' endColor='#1b263b' height="288px">
+                <div className="card bg-secondary p-3 rounded-lg md:w-64 w-full h-72 flex flex-col items-center overflow-hidden"></div>
+              </Skeleton>
+            </div>
+          ))
+        ) :
+          (jokes.map((joke) => (
             <div key={joke.id} className='px-2 md:mx-0 '>
               <div className="card bg-secondary p-3 rounded-lg md:w-64 w-full h-72 flex flex-col  items-center overflow-hidden">
                 <div className='flex'>
@@ -149,20 +162,34 @@ function Home() {
                 </div>
               </div>
             </div>
-          ))}
+          )))}
         </Slider>
 
         {/* Quotes Container */}
         <div className='flex justify-between md:mb-5 mb-3 mt-10 md:px-4 px-2'>
-          <h5>Random Quotes</h5>
-          <NavLink className='viewMore' to='/quotes'>
+          <SkeletonText noOfLines={1} isLoaded={!loading} startColor='#0d1b2a' endColor='#1b263b' >
+            <h5>Random Quotes</h5>
+          </SkeletonText>
+          <SkeletonText noOfLines={1} isLoaded={!loading} startColor='#0d1b2a' endColor='#1b263b' >
+            <NavLink className='viewMore' to='/quotes'>
             view more
-            <FontAwesomeIcon className='ms-2 arrRt transition-all duration-300' icon={faArrowRight} />
-          </NavLink>
+              <FontAwesomeIcon className='ms-2 arrRt transition-all duration-300' icon={faArrowRight} />
+            </NavLink>
+          </SkeletonText>
         </div>
 
         <Slider {...sliderSettings}>
-          {quotes.map((quotes, index) => (
+          {loading ? (
+          Array(3).fill().map((_, i) => (
+            <div key={i} className='px-2 md:mx-0'>
+              <Skeleton rounded='md' startColor='#0d1b2a' endColor='#1b263b' height="288px">
+                <div className="card bg-secondary p-3 rounded-lg md:w-64 w-full h-72 flex flex-col items-center overflow-hidden"></div>
+              </Skeleton>
+            </div>
+          ))
+        )
+          :(
+            quotes.map((quotes, index) => (
             <div key={index} className='px-2 md:mx-0'>
               <div className="card bg-secondary p-3 rounded-lg md:w-64 w-full h-72 flex flex-col items-center overflow-hidden">
                 <h2>{quotes.a}</h2>
@@ -171,33 +198,50 @@ function Home() {
                 </div>
               </div>
             </div>
-          ))}
+          )))}
         </Slider>
 
-        {/* Facts Container */}
-        <div className='flex w-xl justify-between md:mb-5 mt-10 mb-3 md:px-4 px-2'>
+        {/* Facts Container */}        
+      <div className='flex w-xl justify-between md:mb-5 mt-10 mb-3 md:px-4 px-2'>
+        <SkeletonText noOfLines={1} isLoaded={!loading} startColor='#0d1b2a' endColor='#1b263b'>
           <h5>Random Facts</h5>
+        </SkeletonText>
+        <SkeletonText noOfLines={1} isLoaded={!loading} startColor='#0d1b2a' endColor='#1b263b'>
           <NavLink className='viewMore' to='/facts'>
             view more
             <FontAwesomeIcon className='ms-2 arrRt transition-all duration-300' icon={faArrowRight} />
           </NavLink>
-        </div>
+        </SkeletonText>
+      </div>
 
-        <Slider {...sliderSettings}>
-          {facts && facts.map((fact) => (
-            <div key={fact.id} className='px-2 md:mx-0 '>
-              <div className="card bg-secondary p-3 rounded-lg md:w-64 w-full h-72 flex flex-col  items-center overflow-hidden">
+      <Slider {...sliderSettings}>
+        {loading ? (
+          // Display skeletons while loading
+          Array(3).fill().map((_, index) => (
+            <div key={index} className='px-2 md:mx-0'>
+              <Skeleton rounded='md' startColor='#0d1b2a' endColor='#1b263b' height="288px">
+                <div className="card bg-secondary p-3 rounded-lg md:w-64 w-full h-72 flex flex-col items-center overflow-hidden"></div>
+              </Skeleton>
+            </div>
+          ))
+        ) : (
+          // Display actual facts once loaded
+          facts.map((fact) => (
+            <div key={fact.id} className='px-2 md:mx-0'>
+              <div className="card bg-secondary p-3 rounded-lg md:w-64 w-full h-72 flex flex-col items-center overflow-hidden">
                 <div className='flex'>
                   <p className='text-sm'>source: &nbsp;</p>
                   <h4 className='font-semibold'>{fact.source}</h4>
                 </div>
-                <div className='text-sm md:mt-10 mt-7 '>
+                <div className='text-sm md:mt-10 mt-7'>
                   <p className='font-semibold'>{fact.text}</p>
                 </div>
               </div>
             </div>
-          ))}
-        </Slider>
+          ))
+        )}
+      </Slider>
+ 
 
       </div>
     </>
