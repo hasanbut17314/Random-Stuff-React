@@ -11,12 +11,12 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 function Home() {
-  
+
   const MySwal = withReactContent(Swal)
 
   const skStart = getComputedStyle(document.documentElement).getPropertyValue('--skeleton-start');
   const skEnd = getComputedStyle(document.documentElement).getPropertyValue('--skeleton-end');
-  
+
   const [jokes, setJokes] = useState([]);
   const [quotes, setQuotes] = useState([]);
   const [facts, setFacts] = useState([]);
@@ -105,7 +105,7 @@ function Home() {
         }
       }
     ]
-  };
+  }
 
   const showError = (error) => {
     MySwal.fire({
@@ -116,9 +116,28 @@ function Home() {
     });
   }
 
+  const errorScreen = () => {
+    return (
+    <main className="grid min-h-full place-items-center bg-primary px-6 py-24 sm:py-32 lg:px-8">
+    <div className="text-center">
+      <p className="mt-6 text-base leading-7">Crap! Something went wrong</p>
+      <div className="mt-4 flex items-center justify-center gap-x-6">
+        <button onClick={randomCalls} className="rounded-md bg-secondary px-3.5 py-2.5 text-sm font-semibold shadow-sm outline outline-1">
+          Try Again
+        </button>
+      </div>
+    </div>
+    </main>
+    )
+  }
+
   useEffect(() => {
     randomCalls()
   }, [])
+
+  if (jokes == '' || quotes== '' || facts == '') {
+    return errorScreen()
+  }
 
   return (
     <>
@@ -127,47 +146,47 @@ function Home() {
         {/* Jokes Container */}
         <div className='flex w-xl justify-between md:mb-5 mb-3 md:px-4 px-2'>
           <SkeletonText noOfLines={1} isLoaded={!loading} startColor={skStart} endColor={skEnd}>
-          <h5>Random Jokes</h5>
+            <h5>Random Jokes</h5>
           </SkeletonText>
-           <SkeletonText noOfLines={1} isLoaded={!loading} startColor={skStart} endColor={skEnd}>
-          <NavLink className='viewMore' to='/jokes'>
-            view more
-            <FontAwesomeIcon className='ms-2 arrRt transition-all duration-300' icon={faArrowRight} />
-          </NavLink>
+          <SkeletonText noOfLines={1} isLoaded={!loading} startColor={skStart} endColor={skEnd}>
+            <NavLink className='viewMore' to='/jokes'>
+              view more
+              <FontAwesomeIcon className='ms-2 arrRt transition-all duration-300' icon={faArrowRight} />
+            </NavLink>
           </SkeletonText>
         </div>
 
         <Slider {...sliderSettings}>
           {loading ? (
-          // Display skeletons while loading
-          Array(3).fill().map((_, indx) => (
-            <div key={indx} className='px-2 md:mx-0'>
-              <Skeleton rounded='md' startColor={skStart} endColor={skEnd} height="288px">
-                <div className="card bg-secondary p-3 rounded-lg md:w-64 w-full h-72 flex flex-col items-center overflow-hidden"></div>
-              </Skeleton>
-            </div>
-          ))
-        ) :
-          (jokes.map((joke) => (
-            <div key={joke.id} className='px-2 md:mx-0 '>
-              <div className="card bg-secondary p-3 rounded-lg md:w-64 w-full h-72 flex flex-col  items-center overflow-hidden">
-                <div className='flex'>
-                  <p className='text-sm'>category: &nbsp;</p>
-                  <h4 className='font-semibold'>{joke.category}</h4>
-                </div>
-                <div className='text-sm md:mt-10 mt-7 '>
-                  {joke.type === 'single' ? (
-                    <p className='font-semibold'>{joke.joke}</p>
-                  ) : (
-                    <>
-                      <p>{joke.setup}</p>
-                      <p className='font-semibold mt-2'>{joke.delivery}</p>
-                    </>
-                  )}
+            // Display skeletons while loading
+            Array(3).fill().map((_, indx) => (
+              <div key={indx} className='px-2 md:mx-0'>
+                <Skeleton rounded='md' startColor={skStart} endColor={skEnd} height="288px">
+                  <div className="card bg-secondary p-3 rounded-lg md:w-64 w-full h-72 flex flex-col items-center overflow-hidden"></div>
+                </Skeleton>
+              </div>
+            ))
+          ) :
+            (jokes.map((joke) => (
+              <div key={joke.id} className='px-2 md:mx-0 '>
+                <div className="card bg-secondary p-3 rounded-lg md:w-64 w-full h-72 flex flex-col  items-center overflow-hidden">
+                  <div className='flex'>
+                    <p className='text-sm'>category: &nbsp;</p>
+                    <h4 className='font-semibold'>{joke.category}</h4>
+                  </div>
+                  <div className='text-sm md:mt-10 mt-7 '>
+                    {joke.type === 'single' ? (
+                      <p className='font-semibold'>{joke.joke}</p>
+                    ) : (
+                      <>
+                        <p>{joke.setup}</p>
+                        <p className='font-semibold mt-2'>{joke.delivery}</p>
+                      </>
+                    )}
+                  </div>
                 </div>
               </div>
-            </div>
-          )))}
+            )))}
         </Slider>
 
         {/* Quotes Container */}
@@ -177,7 +196,7 @@ function Home() {
           </SkeletonText>
           <SkeletonText noOfLines={1} isLoaded={!loading} startColor={skStart} endColor={skEnd} >
             <NavLink className='viewMore' to='/quotes'>
-            view more
+              view more
               <FontAwesomeIcon className='ms-2 arrRt transition-all duration-300' icon={faArrowRight} />
             </NavLink>
           </SkeletonText>
@@ -185,28 +204,28 @@ function Home() {
 
         <Slider {...sliderSettings}>
           {loading ? (
-          Array(3).fill().map((_, i) => (
-            <div key={i} className='px-2 md:mx-0'>
-              <Skeleton rounded='md' startColor={skStart} endColor={skEnd} height="288px">
-                <div className="card bg-secondary p-3 rounded-lg md:w-64 w-full h-72 flex flex-col items-center overflow-hidden"></div>
-              </Skeleton>
-            </div>
-          ))
-        )
-          :(
-            quotes.map((quotes, index) => (
-            <div key={index} className='px-2 md:mx-0'>
-              <div className="card bg-secondary p-3 rounded-lg md:w-64 w-full h-72 flex flex-col items-center overflow-hidden">
-                <h2>{quotes.a}</h2>
-                <div className='text-sm md:mt-10 mt-7'>
-                  <p className='font-semibold'>{quotes.q}</p>
-                </div>
+            Array(3).fill().map((_, i) => (
+              <div key={i} className='px-2 md:mx-0'>
+                <Skeleton rounded='md' startColor={skStart} endColor={skEnd} height="288px">
+                  <div className="card bg-secondary p-3 rounded-lg md:w-64 w-full h-72 flex flex-col items-center overflow-hidden"></div>
+                </Skeleton>
               </div>
-            </div>
-          )))}
+            ))
+          )
+            : (
+              quotes.map((quotes, index) => (
+                <div key={index} className='px-2 md:mx-0'>
+                  <div className="card bg-secondary p-3 rounded-lg md:w-64 w-full h-72 flex flex-col items-center overflow-hidden">
+                    <h2>{quotes.a}</h2>
+                    <div className='text-sm md:mt-10 mt-7'>
+                      <p className='font-semibold'>{quotes.q}</p>
+                    </div>
+                  </div>
+                </div>
+              )))}
         </Slider>
 
-        {/* Facts Container */}        
+        {/* Facts Container */}
         <div className='flex w-xl justify-between md:mb-5 mt-10 mb-3 md:px-4 px-2'>
           <SkeletonText noOfLines={1} isLoaded={!loading} startColor={skStart} endColor={skEnd}>
             <h5>Random Facts</h5>
@@ -246,7 +265,7 @@ function Home() {
             ))
           )}
         </Slider>
- 
+
       </div>
     </>
   )
