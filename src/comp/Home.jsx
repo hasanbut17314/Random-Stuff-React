@@ -116,28 +116,10 @@ function Home() {
     });
   }
 
-  const errorScreen = () => {
-    return (
-    <main className="grid min-h-full place-items-center bg-primary px-6 py-24 sm:py-32 lg:px-8">
-    <div className="text-center">
-      <p className="mt-6 text-base leading-7">Crap! Something went wrong</p>
-      <div className="mt-4 flex items-center justify-center gap-x-6">
-        <button onClick={randomCalls} className="rounded-md bg-secondary px-3.5 py-2.5 text-sm font-semibold shadow-sm outline outline-1">
-          Try Again
-        </button>
-      </div>
-    </div>
-    </main>
-    )
-  }
-
   useEffect(() => {
     randomCalls()
   }, [])
 
-  if (jokes == '' || quotes== '' || facts == '') {
-    return errorScreen()
-  }
 
   return (
     <>
