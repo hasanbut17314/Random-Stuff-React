@@ -44,6 +44,11 @@ body {
     color: var(--secondary-text-color) !important;
 }
 
+option {
+    background-color: var(--secondary-bg) !important;
+    color: var(--primary-text-color);
+}
+
 .active {
     color: var(--secondary-text-color);
     font-weight: 600;
