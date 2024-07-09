@@ -49,19 +49,19 @@ function Quotes() {
             <option value="Albert Einstein">Albert Einstein</option>
           </Select>
           <Button
-          className='mx-3 bg-secondary border text-primary font-medium'
-          loadingText='Submitting'
+          className='mx-3 bg-secondary border text-primary'
+          loadingText='Searching'
           >
-          Submit
+          Search
           </Button>
         </form>
       </div>
       <div className='mt-8'>
         <h4 className='mb-4'>Random Quotes</h4>
-        <div className='grid lg:grid-cols-4 sm:grid-cols-3 grid-cols-2 md:gap-y-6 gap-y-4'>
+        <div className='grid lg:grid-cols-4 sm:grid-cols-3 grid-cols-2 md:gap-y-6 gap-y-4 md:gap-x-6 gap-x-4'>
           {quotes.map((quotes, index) => (
-            <div key={index} className='px-2 md:mx-0'>
-              <div className="card bg-secondary p-3 rounded-lg md:w-64 w-full h-72 flex flex-col items-center overflow-hidden">
+            <div key={index} className=''>
+              <div className="card bg-secondary p-3 rounded-lg w-full h-72 flex flex-col items-center overflow-hidden">
                 <h2>{quotes.a}</h2>
                 <div className='text-sm md:mt-10 mt-7'>
                   <p className='font-semibold'>{quotes.q}</p>
