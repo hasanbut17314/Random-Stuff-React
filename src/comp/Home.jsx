@@ -140,7 +140,6 @@ function Home() {
 
         <Slider {...sliderSettings}>
           {loading ? (
-            // Display skeletons while loading
             Array(3).fill().map((_, indx) => (
               <div key={indx} className='px-2 md:mx-0'>
                 <Skeleton rounded='md' startColor={skStart} endColor={skEnd} height="288px">
@@ -231,7 +230,6 @@ function Home() {
               </div>
             ))
           ) : (
-            // Display actual facts once loaded
             facts.map((fact) => (
               <div key={fact.id} className='px-2 md:mx-0'>
                 <div className="card bg-secondary p-3 rounded-lg md:w-64 w-full h-72 flex flex-col items-center overflow-hidden">
