@@ -28,7 +28,7 @@ function Home() {
     try {
 
       const [jResponse, qResponse] = await axios.all([
-        axios.get('/joke/Any?amount=10'),
+        axios.get('https://v2.jokeapi.dev/joke/Any?amount=10'),
         axios.get('/quotes?limit=5')
       ])
       let fResponse = Array.from({ length: 10 }, () => axios.get('https://uselessfacts.jsph.pl/random.json?language=en'))
